@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistec - Cadastro</title>
+    <link rel="stylesheet" href="./login/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    .seller-register {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.seller-register .login-btn {
+    display: inline-flex;
+    width: auto;
+    padding: 12px 24px;
+}
+
+.login-btn{
+text-decoration: none;
+}
+</style>
+<body>
+    <div class="theme-switch">
+        <button id="themeToggle" aria-label="Alternar tema">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="login-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h1>Assistec</h1>
+            <p>Portal de Assistência Técnica</p>
+        </div>
+
+        <form id="registerForm" class="login-form" action="./php/cadastrar.php" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nome" name="nome" required placeholder="Nome Completo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" name="senha" required placeholder="Senha">
+                    <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefone" name="telefone" required placeholder="Telefone">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" id="cep" name="cep" required placeholder="CEP">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-road"></i>
+                    <input type="text" id="rua" name="rua" required placeholder="Rua">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-hashtag"></i>
+                    <input type="text" id="numero" name="numero" required placeholder="Número">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-building"></i>
+                    <input type="text" id="complemento" name="complemento" placeholder="Complemento">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-map"></i>
+                    <input type="text" id="bairro" name="bairro" required placeholder="Bairro">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-city"></i>
+                    <input type="text" id="cidade" name="cidade" required placeholder="Cidade">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-flag"></i>
+                    <input type="text" id="estado" name="estado" required placeholder="Estado">
+                </div>
+            </div>
+
+            <input type="hidden" name="nivel_usuario" value="Cliente">
+            <input type="hidden" name="usuario_ativo" value="sim">
+            <input type="hidden" name="tema" value="light">
+
+            <button type="submit" class="login-btn">
+                <span>Cadastrar</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+
+                </form>
+
+        <div class="seller-register">
+            <a href="cadastro-vendedor.html" class="login-btn">
+                <span>Cadastrar como Vendedor</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="register-link">
+            <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+        </div>
+    </div>>
+    </div>
+
+    <script src="./login/js/theme.js"></script>
+    <script>
+        // Máscaras para campos
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            e.target.value = e.target.value
+                .replace(/\D/g, '')
+                .replace(/(\d{2})(\d)/, '($1) $2')
+                .replace(/(\d{5})(\d)/, '$1-$2')
+                .replace(/(-\d{4})\d+?$/, '$1');
+        });
+
+        document.getElementById('cep').addEventListener('input', function(e) {
+            e.target.value = e.target.value
+                .replace(/\D/g, '')
+                .replace(/(\d{5})(\d)/, '$1-$2')
+                .replace(/(-\d{3})\d+?$/, '$1');
+        });
+    </script>
+</body>
+</html>
