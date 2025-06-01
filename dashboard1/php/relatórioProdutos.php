@@ -27,7 +27,7 @@ $html = '
 <html>
 <head>
     <style>
-        /* Cores do Tema Assistec */
+        /* Cores do Tema VitrusTech */
         :root {
             --primary: #8a2be2;
             --secondary: #8a2be2;
@@ -96,8 +96,8 @@ $html = '
 </head>
 <body>
     <div class="header">
-        <img src="caminho/para/sua-logo-assistec.png" class="logo"> <!-- Altere o caminho -->
-        <h1 class="title">Relatório de Produtos - Assistec</h1>
+        <img src="caminho/para/sua-logo-VitrusTech.png" class="logo"> <!-- Altere o caminho -->
+        <h1 class="title">Relatório de Produtos - VitrusTech</h1>
         <p>Gerado em: '.date('d/m/Y H:i:s').'</p>
     </div>
 
@@ -131,7 +131,7 @@ $html .= '
     </table>
 
     <div class="footer">
-        Assistec Tecnologia e Serviços - '.date('Y').'
+        VitrusTech Tecnologia e Serviços - '.date('Y').'
     </div>
 </body>
 </html>';
@@ -143,6 +143,6 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Saída do PDF (Download)
-$dompdf->stream("relatorio-assistec-".date('Ymd-His').".pdf", [
+$dompdf->stream("relatorio-VitrusTech-".date('Ymd-His').".pdf", [
     "Attachment" => true
 ]);

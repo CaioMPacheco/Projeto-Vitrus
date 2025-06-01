@@ -139,7 +139,7 @@ if (isset($_GET['sucesso'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistec - Clientes</title>
+    <title>VitrusTech - Clientes</title>
     <link rel="stylesheet" href="./css/dashboard.css">
     <link rel="stylesheet" href="./css/footer.css">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -360,7 +360,7 @@ if (isset($_GET['sucesso'])) {
         <div class="sidebar-header">
             <div class="logo">
                 <i class="fas fa-tools"></i>
-                <h1>Assistec</h1>
+                <h1>VitrusTech</h1>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" id="closeSidebar" width="21" height="21" fill="currentColor"
                 cursor="pointer" class="bi bi-x-circle-fill" viewBox="0 0 16 16">

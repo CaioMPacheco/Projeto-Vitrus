@@ -4,12 +4,12 @@
         <div class="footer-section about">
             <div class="logo-footer">
                 <i class="fas fa-tools"></i>
-                <h2>Assistec</h2>
+                <h2>VitrusTech</h2>
             </div>
             <p>Soluções em assistência técnica e produtos de tecnologia com qualidade e excelência desde 2010.</p>
             <div class="contact">
                 <span><i class="fas fa-phone"></i> &nbsp; (11) 9999-8888</span>
-                <span><i class="fas fa-envelope"></i> &nbsp; contato@assistec.com.br</span>
+                <span><i class="fas fa-envelope"></i> &nbsp; contato@VitrusTech.com.br</span>
             </div>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> Assistec. Todos os direitos reservados.</p>
+        <p>&copy; <?php echo date('Y'); ?> VitrusTech. Todos os direitos reservados.</p>
     </div>
 </footer>
 
