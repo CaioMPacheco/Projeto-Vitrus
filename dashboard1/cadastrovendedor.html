@@ -227,5 +227,35 @@
                 .replace(/(-\d{3})\d+?$/, '$1');
         });
     </script>
+    <script>
+// Verificar parâmetro de erro na URL
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const erro = urlParams.get('erro');
+    
+    if(erro) {
+        let mensagem = '';
+        
+        switch(erro) {
+            case 'email_duplicado':
+                mensagem = 'Este email já está cadastrado!';
+                break;
+            case 'cpf_duplicado':
+                mensagem = 'Este CPF já está cadastrado!';
+                break;
+            case 'db':
+                mensagem = 'Erro no banco de dados. Tente novamente mais tarde.';
+                break;
+            default:
+                mensagem = decodeURIComponent(erro);
+        }
+        
+        alert(mensagem);
+        
+        // Limpar o parâmetro de erro da URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+};
+</script>
 </body>
 </html>
