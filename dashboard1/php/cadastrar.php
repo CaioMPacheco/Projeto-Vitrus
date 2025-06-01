@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configurações SMTP
         $mail->isSMTP();  // Força o uso de SMTP
         $mail->Host = 'smtp.gmail.com';
-        $mail->Username = 'caiopacheco0730@gmail.com';
-        $mail->Password = 'wvum zapz uguy jdts'; // Ou senha de app
+        ';
+        $mail->Password ='; // Ou senha de app
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
