@@ -260,22 +260,9 @@ $tema = $_SESSION['tema'] ?? 'light';
             </button>
         </div>
         <nav class="sidebar-nav">
-            <a href="../dashboard.php" class="nav-item">
+            <a href="./loja.html" class="nav-item">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
-            </a>
-            <a href="./loja/gerenciar_produtos.php" class="nav-item">
-                <i class="fas fa-users"></i>
-                <span>Pessoas Cadastradas</span>
-            </a>
-            <a href="../php/relatórioProdutos.php" class="nav-item">
-                <i class="fas fa-chart-bar"></i>
-                <span>Relatórios</span>
-            </a>
-            <a href="perfil.php" class="nav-item active ">
-                <i class="fas fa-user-cog"></i>
-                <span>Editar Perfil</span>
-            </a>
         </nav>
     </aside>
 

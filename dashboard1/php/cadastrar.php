@@ -6,12 +6,12 @@ require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configuração do banco de dados
-    $servername = "localhost";
-    $username = "seu_usuario";
-    $password = "sua_senha";
-    $dbname = "assistec";
+    $servername = 'LocalHost';
+    $username = 'root';
+    $password = '';
+    $dbname = 'assistec';
     
-    try {
+        try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dados = [
             'nome' => trim($_POST['nome']),
             'email' => filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL),
-            'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
+            'senha' => trim($_POST['senha']),
             'telefone' => preg_replace('/[^0-9]/', '', $_POST['telefone']),
             'rua' => trim($_POST['rua']),
             'numero' => trim($_POST['numero']),
@@ -43,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Este email já está cadastrado");
         }
 
-        // Inserir no banco de dados
+        // CORREÇÃO: Removida a coluna 'tema' da query
         $sql = "INSERT INTO usuarios (
             nome, email, senha, telefone, rua, numero, complemento, 
-            bairro, cidade, estado, cep, nivel_usuario, usuario_ativo, tema
+            bairro, cidade, estado, cep, nivel_usuario, usuario_ativo
         ) VALUES (
             :nome, :email, :senha, :telefone, :rua, :numero, 
             :complemento, :bairro, :cidade, :estado, :cep, 
-            'Cliente', 'sim', 'light'
+            'Cliente', 'sim'
         )";
 
         $stmt = $conn->prepare($sql);
@@ -60,17 +60,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail = new PHPMailer(true);
 
         // Configurações SMTP
-        $mail->isSMTP();
-        $mail->Host = 'smtp.seuprovedor.com';  // Ex: smtp.hostinger.com
-        $mail->SMTPAuth = true;
-        $mail->Username = 'no-reply@assistec.com.br';
-        $mail->Password = 'sua_senha_email';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+        $mail->isSMTP();  // Força o uso de SMTP
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Username = 'caiopacheco0730@gmail.com';
+        $mail->Password = 'wvum zapz uguy jdts'; // Ou senha de app
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
         // Remetente e destinatário
-        $mail->setFrom('no-reply@assistec.com.br', 'Assistec');
+        $mail->setFrom('caiopacheco0730@gmail.com', 'VitrusTech');
         $mail->addAddress($dados['email'], $dados['nome']);
 
         // Conteúdo do email
@@ -92,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <body>
                 <div class='container'>
                     <div class='header'>
-                        <div class='logo'>Assistec</div>
+                        <div class='logo'>VitrusTech</div>
                         <h2>Bem-vindo à nossa plataforma!</h2>
                     </div>
                     
@@ -107,10 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><strong>Endereço:</strong> {$dados['rua']}, {$dados['numero']} - {$dados['bairro']}</li>
                         </ul>
                         
-                        <p>Acesse nossa loja: <a href='https://www.assistec.com.br/loja'>https://www.assistec.com.br/loja</a></p>
+                        <p>Acesse nossa loja: <a href='https://www.VitrusTech.com.br/loja'>https://www.VitrusTech.com.br/loja</a></p>
                         
                         <p>Atenciosamente,<br>
-                        Equipe Assistec</p>
+                        Equipe VitrusTech</p>
                     </div>
                 </div>
             </body>
@@ -122,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } catch (PDOException $e) {
         error_log("Erro no banco de dados: " . $e->getMessage());
-        header("Location: ../cadastro.html?erro=db");
+        
     } catch (Exception $e) {
         error_log("Erro geral: " . $e->getMessage());
         header("Location: ../cadastro.html?erro=" . urlencode($e->getMessage()));
