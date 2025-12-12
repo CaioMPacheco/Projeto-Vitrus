@@ -68,7 +68,3 @@ Contato
 -------
 - Autor: CaioMPacheco (ver perfil do GitHub)
 - Para dúvidas e colaborações, abra uma issue no repositório.
-
-Licença
--------
-- Adicione um arquivo LICENSE ao repositório com a licença desejada (ex.: MIT, Apache 2.0) para formalizar o uso do projeto.
