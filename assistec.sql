@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Maio-2025 às 00:36
+-- Tempo de geração: 01/06/2025 às 23:31
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carrinhos`
+-- Estrutura para tabela `carrinhos`
 --
 
 CREATE TABLE `carrinhos` (
@@ -36,7 +36,7 @@ CREATE TABLE `carrinhos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carrinho_itens`
+-- Estrutura para tabela `carrinho_itens`
 --
 
 CREATE TABLE `carrinho_itens` (
@@ -49,7 +49,7 @@ CREATE TABLE `carrinho_itens` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -64,7 +64,7 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `categoria`, `estoque`, `descricao`, `imagem`, `tipo_imagem`) VALUES
@@ -73,12 +73,15 @@ INSERT INTO `produtos` (`id`, `nome`, `preco`, `categoria`, `estoque`, `descrica
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `cnpj` varchar(18) DEFAULT NULL,
+  `razao_social` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(500) NOT NULL,
   `nivel_usuario` varchar(35) NOT NULL,
@@ -95,16 +98,18 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `nivel_usuario`, `usuario_ativo`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `foto_perfil`) VALUES
-(1, 'Caio', 'caio@gmail.com', '123', 'Administrador', 'Sim', '', '', '', '', '', '', '', '', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEBUSEhMVFRUVGRgaGBYYGBoYFxsYGBcXGhgYGBgYHSggGholHRoXIzEiJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0mICIrLS01LS0uLS0vLS01NS0tLy0tLS0tLS0tLy0tLS0vLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/');
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `cpf`, `cnpj`, `razao_social`, `email`, `senha`, `nivel_usuario`, `usuario_ativo`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `foto_perfil`) VALUES
+(1, 'Caio', NULL, NULL, NULL, 'caio@gmail.com', '123', 'Administrador', 'Sim', '', '', '', '', '', '', '', '', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEBUSEhMVFRUVGRgaGBYYGBoYFxsYGBcXGhgYGBgYHSggGholHRoXIzEiJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0mICIrLS01LS0uLS0vLS01NS0tLy0tLS0tLS0tLy0tLS0vLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/'),
+(2, 'CAIO MARQUES PACHECO', NULL, NULL, NULL, 'caiored30@gmail.com', '123', 'Cliente', 'sim', '31983048676', 'Rua pirapama', '1291', '', 'Carmo', 'Sete Lagoas', 'MG', '35700426', NULL),
+(4, 'CAIO MARQUES PACHECO', NULL, NULL, NULL, 'caiored29@gmail.com', '1234', 'Cliente', 'sim', '31983048676', 'Rua pirapama', '1291', '', 'Carmo', 'Sete Lagoas', 'MG', '35700426', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendas`
+-- Estrutura para tabela `vendas`
 --
 
 CREATE TABLE `vendas` (
@@ -121,13 +126,13 @@ CREATE TABLE `vendas` (
 --
 
 --
--- Índices para tabela `carrinhos`
+-- Índices de tabela `carrinhos`
 --
 ALTER TABLE `carrinhos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `carrinho_itens`
+-- Índices de tabela `carrinho_itens`
 --
 ALTER TABLE `carrinho_itens`
   ADD PRIMARY KEY (`id`),
@@ -135,26 +140,26 @@ ALTER TABLE `carrinho_itens`
   ADD KEY `produto_id` (`produto_id`);
 
 --
--- Índices para tabela `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Índices para tabela `vendas`
+-- Índices de tabela `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idproduto` (`idproduto`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -179,7 +184,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`
@@ -188,18 +193,18 @@ ALTER TABLE `vendas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `carrinho_itens`
+-- Restrições para tabelas `carrinho_itens`
 --
 ALTER TABLE `carrinho_itens`
   ADD CONSTRAINT `carrinho_itens_ibfk_1` FOREIGN KEY (`carrinho_id`) REFERENCES `carrinhos` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `carrinho_itens_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
 
 --
--- Limitadores para a tabela `vendas`
+-- Restrições para tabelas `vendas`
 --
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`idproduto`) REFERENCES `produtos` (`id`);

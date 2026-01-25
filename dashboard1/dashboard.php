@@ -251,7 +251,7 @@ $dados_grafico = $conn->query("
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistec - Dashboard</title>
+    <title>VitrusTech - Dashboard</title>
     <link rel="stylesheet" href="./css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">  
@@ -681,7 +681,7 @@ $dados_grafico = $conn->query("
         <div class="sidebar-header">
             <div class="logo">
                 <i class="fas fa-tools"></i>
-                <h1>Assistec</h1>
+                <h1>VitrusTech</h1>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" id="closeSidebar" width="21" height="21" fill="currentColor"
                 cursor="pointer" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
